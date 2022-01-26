@@ -1,2 +1,5 @@
-# SmallFactorioMods
-Various Factorio Mods that I have made, but aren't large enough to deserve their own repositories.
+# Stats GUI
+
+A mod for Factorio that displays various statistics near the FPS/UPS indicator.
+
+Download on the [mod portal](https://mods.factorio.com/mod/StatsGui).
