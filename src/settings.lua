@@ -15,6 +15,13 @@ data:extend({
     default_value = true,
     order = "ab",
   },
+  {
+    type = "bool-setting",
+    name = "statsgui-adjust-for-clock",
+    setting_type = "runtime-per-user",
+    default_value = false,
+    order = "ac",
+  },
 })
 
 for _, sensor_data in pairs(constants.builtin_sensors) do

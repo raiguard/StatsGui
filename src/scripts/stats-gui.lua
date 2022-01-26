@@ -4,7 +4,13 @@ local stats_gui = {}
 
 function stats_gui.build(player, player_table)
   local single_line = player_table.settings.single_line
-  local style = player_table.settings.adjust_for_ups and "statsgui_frame" or "statsgui_frame_no_ups"
+  local style = "statsgui_frame"
+  if player_table.settings.adjust_for_clock then
+    style = style .. "_clock"
+  end
+  if not player_table.settings.adjust_for_ups then
+    style = style .. "_no_ups"
+  end
 
   local window = player.gui.screen.add({
     type = "frame",

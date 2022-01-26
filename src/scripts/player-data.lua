@@ -13,8 +13,9 @@ end
 function player_data.update_settings(player, player_table)
   local mod_settings = player.mod_settings
   local settings = {
-    single_line = mod_settings["statsgui-single-line"].value,
+    adjust_for_clock = mod_settings["statsgui-adjust-for-clock"].value,
     adjust_for_ups = mod_settings["statsgui-adjust-for-fps-ups"].value,
+    single_line = mod_settings["statsgui-single-line"].value,
   }
 
   for _, sensor_data in pairs(constants.builtin_sensors) do
