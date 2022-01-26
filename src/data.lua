@@ -1,9 +1,9 @@
-local styles = data.raw['gui-style'].default
+local styles = data.raw["gui-style"].default
 
 styles.statsgui_label = {
-  type = 'label_style',
-  font = 'default-game',
-  font_color = default_font_color
+  type = "label_style",
+  font = "default-game",
+  font_color = default_font_color,
 }
 
 styles.statsgui_frame = {
@@ -15,7 +15,7 @@ styles.statsgui_frame = {
     horizontal_align = "right",
     horizontally_stretchable = "on",
     top_padding = 10,
-    right_padding = 287 + 180
+    right_padding = 287 + 180,
   },
   vertical_flow_style = {
     type = "vertical_flow_style",
@@ -23,8 +23,8 @@ styles.statsgui_frame = {
     horizontal_align = "right",
     horizontally_stretchable = "on",
     top_padding = 38,
-    right_padding = 287
-  }
+    right_padding = 287,
+  },
 }
 
 styles.statsgui_frame_no_ups = {
@@ -36,7 +36,7 @@ styles.statsgui_frame_no_ups = {
     horizontal_align = "right",
     horizontally_stretchable = "on",
     top_padding = 10,
-    right_padding = 287
+    right_padding = 287,
   },
   vertical_flow_style = {
     type = "vertical_flow_style",
@@ -44,6 +44,6 @@ styles.statsgui_frame_no_ups = {
     horizontal_align = "right",
     horizontally_stretchable = "on",
     top_padding = 10,
-    right_padding = 287
-  }
+    right_padding = 287,
+  },
 }

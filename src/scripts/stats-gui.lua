@@ -6,12 +6,12 @@ function stats_gui.build(player, player_table)
   local single_line = player_table.settings.single_line
   local style = player_table.settings.adjust_for_ups and "statsgui_frame" or "statsgui_frame_no_ups"
 
-  local window = player.gui.screen.add{
+  local window = player.gui.screen.add({
     type = "frame",
     style = style,
     direction = single_line and "horizontal" or "vertical",
-    ignored_by_interaction = true
-  }
+    ignored_by_interaction = true,
+  })
 
   player_table.stats_window = window
 
@@ -26,7 +26,9 @@ end
 
 function stats_gui.update(player, player_table)
   local window = player_table.stats_window
-  if not window then return end
+  if not window then
+    return
+  end
   local children = window.children
 
   local i = 0
@@ -38,11 +40,11 @@ function stats_gui.update(player, player_table)
       if label then
         label.caption = caption
       else
-        window.add{
+        window.add({
           type = "label",
           style = "statsgui_label",
           caption = caption,
-        }
+        })
       end
     end
   end
@@ -54,7 +56,9 @@ end
 
 function stats_gui.set_width(player, player_table)
   local window = player_table.stats_window
-  if not window then return end
+  if not window then
+    return
+  end
   window.style.width = (player.display_resolution.width / player.display_scale)
 end
 

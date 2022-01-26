@@ -16,7 +16,7 @@ return function()
         progress_samples = {}
         global.research_progress_samples[force.index] = progress_samples
       end
-      progress_samples[#progress_samples + 1] = {tech = tech.name, progress = force.research_progress}
+      progress_samples[#progress_samples + 1] = { tech = tech.name, progress = force.research_progress }
       if #progress_samples > constants.research_progress_samples_count then
         table.remove(progress_samples, 1)
       end
@@ -49,7 +49,6 @@ return function()
       else
         strings[force.index] = "∞"
       end
-
     end
   end
 

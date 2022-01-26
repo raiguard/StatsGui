@@ -1,5 +1,7 @@
 return function(player)
-  if not global.players[player.index].settings.show_daytime then return end
+  if not global.players[player.index].settings.show_daytime then
+    return
+  end
 
   local days = math.floor(1 + ((game.tick + 12500) / 25000))
 
@@ -10,10 +12,10 @@ return function(player)
 
   return {
     "",
-    {"statsgui.time"},
-    " = "..string.format("%d:%02d", daytime_hours, daytime_minutes % 60),
+    { "statsgui.time" },
+    " = " .. string.format("%d:%02d", daytime_hours, daytime_minutes % 60),
     ", ",
-    {"statsgui.day"},
-    " "..days
+    { "statsgui.day" },
+    " " .. days,
   }
 end

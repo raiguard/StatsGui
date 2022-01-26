@@ -1,5 +1,5 @@
 local preprocessors = {
-  require("scripts.research-progress")
+  require("scripts.research-progress"),
 }
 
 return preprocessors

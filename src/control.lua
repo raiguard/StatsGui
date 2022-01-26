@@ -45,17 +45,14 @@ event.on_player_removed(function(e)
   global.players[e.player_index] = nil
 end)
 
-event.register(
-  {
-    defines.events.on_player_display_resolution_changed,
-    defines.events.on_player_display_scale_changed
-  },
-  function(e)
-    local player = game.get_player(e.player_index)
-    local player_table = global.players[e.player_index]
-    stats_gui.set_width(player, player_table)
-  end
-)
+event.register({
+  defines.events.on_player_display_resolution_changed,
+  defines.events.on_player_display_scale_changed,
+}, function(e)
+  local player = game.get_player(e.player_index)
+  local player_table = global.players[e.player_index]
+  stats_gui.set_width(player, player_table)
+end)
 
 -- SETTINGS
 
@@ -103,5 +100,7 @@ remote.add_interface("StatsGui", {
       return remote.call(interface, func, player)
     end
   end,
-  version = function() return constants.interface_version end
+  version = function()
+    return constants.interface_version
+  end,
 })
