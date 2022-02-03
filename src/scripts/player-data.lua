@@ -27,9 +27,7 @@ function player_data.update_settings(player, player_table)
 end
 
 function player_data.refresh(player, player_table)
-  if player_table.stats_window then
-    stats_gui.destroy(player_table)
-  end
+  stats_gui.destroy(player_table)
 
   player_data.update_settings(player, player_table)
 

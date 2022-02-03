@@ -26,14 +26,18 @@ function stats_gui.build(player, player_table)
 end
 
 function stats_gui.destroy(player_table)
-  player_table.stats_window.destroy()
-  player_table.stats_window = nil
+  local stats_window = player_table.stats_window
+  if stats_window and stats_window.valid then
+    stats_window.destroy()
+    player_table.stats_window = nil
+  end
 end
 
 function stats_gui.update(player, player_table)
   local window = player_table.stats_window
-  if not window then
-    return
+  if not window or not window.valid then
+    stats_gui.build(player, player_table)
+    window = player_table.stats_window
   end
   local children = window.children
 
@@ -62,8 +66,9 @@ end
 
 function stats_gui.set_width(player, player_table)
   local window = player_table.stats_window
-  if not window then
-    return
+  if not window or not window.valid then
+    stats_gui.build(player, player_table)
+    window = player_table.stats_window
   end
   window.style.width = (player.display_resolution.width / player.display_scale)
 end
