@@ -87,6 +87,23 @@ script.on_nth_tick(60, function()
   end
 end)
 
+-- CUTSCENE
+
+script.on_event(
+  { defines.events.on_cutscene_started, defines.events.on_cutscene_finished, defines.events.on_cutscene_cancelled },
+  function(e)
+    local player = game.get_player(e.player_index)
+    if not player then
+      return
+    end
+    local player_table = global.players[e.player_index]
+    if not player_table then
+      return
+    end
+    player_table.stats_window.visible = player.controller_type ~= defines.controllers.cutscene
+  end
+)
+
 -- -----------------------------------------------------------------------------
 -- REMOTE INTERFACE
 

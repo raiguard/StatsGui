@@ -17,6 +17,7 @@ function stats_gui.build(player, player_table)
     style = style,
     direction = single_line and "horizontal" or "vertical",
     ignored_by_interaction = true,
+    visible = player.controller_type ~= defines.controllers.cutscene,
   })
 
   player_table.stats_window = window
