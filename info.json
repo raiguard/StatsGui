@@ -9,6 +9,10 @@
   "factorio_version": "1.1",
   "dependencies": ["base >= 1.1.100", "flib >= 0.13.0"],
   "package": {
-    "git_publish_branch": "main"
+    "git_publish_branch": "main",
+    "scripts": {
+      "prepublish": "factorio-crowdin-sync"
+    },
+    "sync_portal_details": true
   }
 }
