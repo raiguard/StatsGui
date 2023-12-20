@@ -22,6 +22,13 @@ data:extend({
     default_value = false,
     order = "ac",
   },
+  {
+    type = "bool-setting",
+    name = "statsgui-show-playtime-in-days",
+    setting_type = "runtime-per-user",
+    default_value = false,
+    order = "ad",
+  },
 })
 
 for _, sensor_data in pairs(constants.builtin_sensors) do
