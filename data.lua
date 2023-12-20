@@ -3,6 +3,7 @@ local styles = data.raw["gui-style"].default
 styles.statsgui_label = {
   type = "label_style",
   font = "default-game",
+  --- @diagnostic disable-next-line: undefined-global
   font_color = default_font_color,
 }
 

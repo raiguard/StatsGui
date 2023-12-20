@@ -1,4 +1,4 @@
-local misc = require("__flib__.misc")
+local flib_format = require("__flib__.format")
 
 local constants = require("constants")
 
@@ -45,7 +45,7 @@ return function()
       end
 
       if num_samples > 0 then
-        strings[force.index] = misc.ticks_to_timestring(estimated_ticks)
+        strings[force.index] = flib_format.time(estimated_ticks)
       else
         strings[force.index] = "∞"
       end

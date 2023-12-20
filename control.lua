@@ -1,4 +1,3 @@
-local event = require("__flib__.event")
 local migration = require("__flib__.migration")
 
 local constants = require("constants")
@@ -14,7 +13,7 @@ local stats_gui = require("scripts.stats-gui")
 
 -- BOOTSTRAP
 
-event.on_init(function()
+script.on_init(function()
   global.players = {}
   global.research_progress_samples = {}
   global.research_progress_strings = {}
@@ -24,7 +23,7 @@ event.on_init(function()
   end
 end)
 
-event.on_configuration_changed(function(e)
+script.on_configuration_changed(function(e)
   if migration.on_config_changed(e, migrations) then
     global.research_progress_samples = {}
     for i, player in pairs(game.players) do
@@ -35,17 +34,17 @@ end)
 
 -- PLAYER
 
-event.on_player_created(function(e)
+script.on_event(defines.events.on_player_created, function(e)
   local player = game.get_player(e.player_index)
   player_data.init(e.player_index)
   player_data.refresh(player, global.players[e.player_index])
 end)
 
-event.on_player_removed(function(e)
+script.on_event(defines.events.on_player_removed, function(e)
   global.players[e.player_index] = nil
 end)
 
-event.register({
+script.on_event({
   defines.events.on_player_display_resolution_changed,
   defines.events.on_player_display_scale_changed,
 }, function(e)
@@ -56,7 +55,7 @@ end)
 
 -- SETTINGS
 
-event.on_runtime_mod_setting_changed(function(e)
+script.on_event(defines.events.on_runtime_mod_setting_changed, function(e)
   if string.sub(e.setting, 1, 8) == "statsgui" then
     local player = game.get_player(e.player_index)
     local player_table = global.players[e.player_index]
@@ -76,7 +75,7 @@ end)
 -- TICK
 
 -- update stats once per second
-event.on_nth_tick(60, function()
+script.on_nth_tick(60, function()
   -- run preprocessors
   for _, preprocessor in pairs(preprocessors) do
     preprocessor()
