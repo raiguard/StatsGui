@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.0
-Date: ????
+Date: 2023-12-20
   Features:
     - Added a per-player setting to show game playtime in days. (#2)
   Changes:
