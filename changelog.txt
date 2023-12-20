@@ -3,6 +3,8 @@ Version: 1.5.0
 Date: ????
   Features:
     - Added a per-player setting to show game playtime in days. (#2)
+  Bugfixes:
+    - Fixed that some mod settings had two info icons.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.1
 Date: 2022-02-03
