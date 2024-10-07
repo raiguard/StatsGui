@@ -5,7 +5,7 @@ local constants = require("constants")
 local stats_gui = require("scripts.stats-gui")
 
 function player_data.init(player_index)
-  global.players[player_index] = {
+  storage.players[player_index] = {
     settings = {},
   }
 end

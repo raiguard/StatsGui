@@ -14,20 +14,20 @@ local stats_gui = require("scripts.stats-gui")
 -- BOOTSTRAP
 
 script.on_init(function()
-  global.players = {}
-  global.research_progress_samples = {}
-  global.research_progress_strings = {}
+  storage.players = {}
+  storage.research_progress_samples = {}
+  storage.research_progress_strings = {}
   for i, player in pairs(game.players) do
     player_data.init(i)
-    player_data.refresh(player, global.players[i])
+    player_data.refresh(player, storage.players[i])
   end
 end)
 
 script.on_configuration_changed(function(e)
   if migration.on_config_changed(e, migrations) then
-    global.research_progress_samples = {}
+    storage.research_progress_samples = {}
     for i, player in pairs(game.players) do
-      player_data.refresh(player, global.players[i])
+      player_data.refresh(player, storage.players[i])
     end
   end
 end)
@@ -37,11 +37,11 @@ end)
 script.on_event(defines.events.on_player_created, function(e)
   local player = game.get_player(e.player_index)
   player_data.init(e.player_index)
-  player_data.refresh(player, global.players[e.player_index])
+  player_data.refresh(player, storage.players[e.player_index])
 end)
 
 script.on_event(defines.events.on_player_removed, function(e)
-  global.players[e.player_index] = nil
+  storage.players[e.player_index] = nil
 end)
 
 script.on_event({
@@ -49,7 +49,7 @@ script.on_event({
   defines.events.on_player_display_scale_changed,
 }, function(e)
   local player = game.get_player(e.player_index)
-  local player_table = global.players[e.player_index]
+  local player_table = storage.players[e.player_index]
   stats_gui.set_width(player, player_table)
 end)
 
@@ -58,7 +58,7 @@ end)
 script.on_event(defines.events.on_runtime_mod_setting_changed, function(e)
   if string.sub(e.setting, 1, 8) == "statsgui" then
     local player = game.get_player(e.player_index)
-    local player_table = global.players[e.player_index]
+    local player_table = storage.players[e.player_index]
     if
       e.setting == "statsgui-single-line"
       or e.setting == "statsgui-adjust-for-fps-ups"
@@ -82,7 +82,7 @@ script.on_nth_tick(60, function()
   end
   -- update GUIs
   for _, player in pairs(game.connected_players) do
-    local player_table = global.players[player.index]
+    local player_table = storage.players[player.index]
     stats_gui.update(player, player_table)
   end
 end)
@@ -96,7 +96,7 @@ script.on_event(
     if not player then
       return
     end
-    local player_table = global.players[e.player_index]
+    local player_table = storage.players[e.player_index]
     if not player_table then
       return
     end

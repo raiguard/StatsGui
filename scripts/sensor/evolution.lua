@@ -1,5 +1,5 @@
 return function(player)
-  if not global.players[player.index].settings.show_evolution then
+  if not storage.players[player.index].settings.show_evolution then
     return
   end
 

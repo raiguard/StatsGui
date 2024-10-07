@@ -1,7 +1,7 @@
 local math = require("__flib__.math")
 
 return function(player)
-  if not global.players[player.index].settings.show_position then
+  if not storage.players[player.index].settings.show_position then
     return
   end
 

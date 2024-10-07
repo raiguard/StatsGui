@@ -11,10 +11,10 @@ return function()
     local tech = force.current_research
     if tech then
       -- Retrieve or create progress samples table
-      local progress_samples = global.research_progress_samples[force.index]
+      local progress_samples = storage.research_progress_samples[force.index]
       if not progress_samples then
         progress_samples = {}
-        global.research_progress_samples[force.index] = progress_samples
+        storage.research_progress_samples[force.index] = progress_samples
       end
       progress_samples[#progress_samples + 1] = { tech = tech.name, progress = force.research_progress }
       if #progress_samples > constants.research_progress_samples_count then
@@ -52,5 +52,5 @@ return function()
     end
   end
 
-  global.research_progress_strings = strings
+  storage.research_progress_strings = strings
 end
