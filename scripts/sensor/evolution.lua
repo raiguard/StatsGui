@@ -3,7 +3,7 @@ return function(player)
     return
   end
 
-  local evolution = game.forces.enemy.evolution_factor * 100
+  local evolution = game.forces.enemy.get_evolution_factor(player.surface) * 100
   return {
     "",
     { "statsgui.evolution" },
