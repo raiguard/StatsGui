@@ -22,7 +22,6 @@ function stats_gui.build(player, player_table)
 
   player_table.stats_window = window
 
-  stats_gui.set_width(player, player_table)
   stats_gui.update(player, player_table)
 end
 
