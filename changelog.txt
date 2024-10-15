@@ -6,6 +6,7 @@ Date: ????
     - Changed default value of "adjust for fps/ups indicator" to false.
   Bugfixes:
     - Fixed incorrect localisation for playtime-in-days feature.
+    - Fixed that the day counter did not account for ticks_per_day on the surface. (#3)
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.0
 Date: 2023-12-20
