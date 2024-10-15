@@ -63,14 +63,11 @@ function stats_gui.update(player, player_table)
   for j = i + 1, #children do
     children[j].destroy()
   end
-end
 
-function stats_gui.set_width(player, player_table)
-  local window = player_table.stats_window
-  if not window or not window.valid then
-    stats_gui.build(player, player_table)
-    window = player_table.stats_window
-  end
+  local in_remote = player.controller_type == defines.controllers.remote
+  local location = window.location
+  location.y = in_remote and (36 * player.display_scale) or 0
+  window.location = location
   window.style.width = (player.display_resolution.width / player.display_scale)
 end
 

@@ -50,7 +50,7 @@ script.on_event({
 }, function(e)
   local player = game.get_player(e.player_index)
   local player_table = storage.players[e.player_index]
-  stats_gui.set_width(player, player_table)
+  stats_gui.update(player, player_table)
 end)
 
 -- SETTINGS
@@ -87,7 +87,7 @@ script.on_nth_tick(60, function()
   end
 end)
 
--- CUTSCENE
+-- CONTROLLER
 
 script.on_event(
   { defines.events.on_cutscene_started, defines.events.on_cutscene_finished, defines.events.on_cutscene_cancelled },
@@ -103,6 +103,18 @@ script.on_event(
     player_table.stats_window.visible = player.controller_type ~= defines.controllers.cutscene
   end
 )
+
+script.on_event(defines.events.on_player_controller_changed, function(e)
+  local player = game.get_player(e.player_index)
+  if not player then
+    return
+  end
+  local player_table = storage.players[e.player_index]
+  if not player_table then
+    return
+  end
+  stats_gui.update(player, player_table)
+end)
 
 -- -----------------------------------------------------------------------------
 -- REMOTE INTERFACE
