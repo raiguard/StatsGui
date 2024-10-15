@@ -12,7 +12,7 @@ data:extend({
     type = "bool-setting",
     name = "statsgui-adjust-for-fps-ups",
     setting_type = "runtime-per-user",
-    default_value = true,
+    default_value = false,
     order = "ab",
   },
   {

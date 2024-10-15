@@ -3,6 +3,7 @@ Version: 1.6.0
 Date: ????
   Changes:
     - Updated to Factorio 2.0.
+    - Changed default value of "adjust for fps/ups indicator" to false.
   Bugfixes:
     - Fixed incorrect localisation for playtime-in-days feature.
 ---------------------------------------------------------------------------------------------------
