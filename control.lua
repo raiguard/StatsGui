@@ -44,14 +44,18 @@ script.on_event(defines.events.on_player_removed, function(e)
   storage.players[e.player_index] = nil
 end)
 
-script.on_event({
-  defines.events.on_player_display_resolution_changed,
-  defines.events.on_player_display_scale_changed,
-}, function(e)
-  local player = game.get_player(e.player_index)
-  local player_table = storage.players[e.player_index]
-  stats_gui.update(player, player_table)
-end)
+script.on_event(
+  { defines.events.on_player_display_resolution_changed, defines.events.on_player_display_scale_changed },
+  --- @param e EventData.on_player_display_resolution_changed|EventData.on_player_display_scale_changed
+  function(e)
+    local player = game.get_player(e.player_index)
+    if not player then
+      return
+    end
+    local player_table = storage.players[e.player_index]
+    stats_gui.update(player, player_table)
+  end
+)
 
 -- SETTINGS
 
@@ -91,6 +95,7 @@ end)
 
 script.on_event(
   { defines.events.on_cutscene_started, defines.events.on_cutscene_finished, defines.events.on_cutscene_cancelled },
+  --- @param e EventData.on_cutscene_started|EventData.on_cutscene_finished|EventData.on_cutscene_cancelled
   function(e)
     local player = game.get_player(e.player_index)
     if not player then
@@ -115,6 +120,26 @@ script.on_event(defines.events.on_player_controller_changed, function(e)
   end
   stats_gui.update(player, player_table)
 end)
+
+script.on_event(
+  { defines.events.on_gui_opened, defines.events.on_gui_closed },
+  --- @param e EventData.on_gui_opened|EventData.on_gui_closed
+  function(e)
+    if e.gui_type ~= defines.gui_type.entity or e.entity.type ~= "locomotive" then
+      return
+    end
+
+    local player = game.get_player(e.player_index)
+    if not player then
+      return
+    end
+    local player_table = storage.players[e.player_index]
+    if not player_table then
+      return
+    end
+    stats_gui.update(player, player_table)
+  end
+)
 
 -- -----------------------------------------------------------------------------
 -- REMOTE INTERFACE

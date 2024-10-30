@@ -33,6 +33,7 @@ function stats_gui.destroy(player_table)
   end
 end
 
+--- @param player LuaPlayer
 function stats_gui.update(player, player_table)
   local window = player_table.stats_window
   if not window or not window.valid then
@@ -64,10 +65,12 @@ function stats_gui.update(player, player_table)
   end
 
   local in_remote = player.controller_type == defines.controllers.remote
+  local in_train_gui = player.opened_gui_type == defines.gui_type.entity and player.opened.type == "locomotive"
   local location = window.location
   location.y = in_remote and (36 * player.display_scale) or 0
   window.location = location
   window.style.width = (player.display_resolution.width / player.display_scale)
+  window.visible = not in_train_gui
 end
 
 return stats_gui

@@ -3,6 +3,7 @@ Version: 1.6.1
 Date: ????
   Bugfixes:
     - Fixed that "show playtime in days" did not display correctly for anything beyond one day. (#5)
+    - Fixed that the stats GUI would overlap the train GUI control hints; it now hides itself completely. (#4)
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.0
 Date: 2024-10-15
