@@ -1,7 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.1
 Date: ????
-  Changes:
+  Bugfixes:
+    - Fixed that "show playtime in days" did not display correctly for anything beyond one day. (#5)
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.0
 Date: 2024-10-15
