@@ -1,6 +1,6 @@
 {
   "name": "StatsGui",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "title": "Stats GUI",
   "description": "Displays various statistics, such as biter evolution, playtime, and more. Blends in with the game's FPS/UPS indicator. Similar to EvoGUI.",
   "author": "raiguard",
